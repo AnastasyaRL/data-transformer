@@ -1,0 +1,19 @@
+{
+  "name": "incident-center/date-transformers",
+  "description": "Преобразователь дат в определенный формат",
+  "type": "library",
+  "require": {
+    "php": "^8.0"
+  },
+  "authors": [
+    {
+      "name": "Ruslan Khazhin",
+      "email": "rkhazhin@fix.ru"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "IncidentCenter\\DateTransformers\\": "src"
+    }
+  }
+}

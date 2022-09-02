@@ -1,6 +1,6 @@
 <?php
 
-namespace IncidentCenter\DateTransformers;
+namespace Anastasya\DateTransformers;
 
 use DateTime;
 use Exception;

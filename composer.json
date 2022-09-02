@@ -1,5 +1,5 @@
 {
-  "name": "incident-center/date-transformers",
+  "name": "anastasya/date-transformer",
   "description": "Преобразователь дат в определенный формат",
   "type": "library",
   "require": {
@@ -13,7 +13,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "IncidentCenter\\DateTransformers\\": "src"
+      "Anastasya\\DateTransformers\\": "src"
     }
   }
 }

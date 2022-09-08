@@ -35,7 +35,7 @@ class ToStringDateTransformer
         $monthRegExpression = implode("|", $months);
 
         $rawWithoutSpaces = str_replace(' ', '', $rawDate);
-        $pattern = '/^([0-9]{1,2})(' . $monthRegExpression . ')([0-9]{4})(г)?$/ui';
+        $pattern = '/^([0-9]{1,2})(' . $monthRegExpression . ')([0-9]{4})(г)?(.)?$/ui';
         if (preg_match_all($pattern, $rawWithoutSpaces, $matches)) {
             $month = $matches[2][0];
             foreach ($months as $number => $value) {

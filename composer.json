@@ -3,7 +3,8 @@
   "description": "Преобразователь дат в определенный формат",
   "type": "library",
   "require": {
-    "php": "^8.0"
+    "php": "^8.0",
+    "ruslanovich111/date-converter": "^1.0"
   },
   "authors": [
     {

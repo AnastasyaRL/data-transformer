@@ -4,7 +4,7 @@
   "type": "library",
   "require": {
     "php": "^8.0",
-    "ruslanovich111/date-converter": "^1.0"
+    "ruslanovich111/date-converter": "dev-master-php8.0"
   },
   "authors": [
     {

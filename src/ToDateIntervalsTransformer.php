@@ -30,7 +30,7 @@ class ToDateIntervalsTransformer
         $config = require __DIR__ . '/../config/date-patterns.php';
         $patternStorage = new ArrayPatternStorage($config);
         $converter = new RowToModelConverter($patternStorage);
-        $dateType = $converter->getRowType($inputDate);
+        $dateType = $converter->getRowType($inputDate)->getType();
 
         switch ($dateType) {
             case RowTypeEnum::SIMPLE_DATE:
@@ -73,11 +73,11 @@ class ToDateIntervalsTransformer
             ];
         }
 
-        $formattedMonth = self::formatNumber($date->getMonthNumber()->value);
+        $formattedMonth = self::formatNumber($date->getMonthNumber()->getMonthNumber());
         if (!$date->getDay()) {
             return [
                 'from' => '01.' . $formattedMonth . '.' . $date->getYear(),
-                'till' => self::getCountDaysInMonth($date->getMonthNumber()->value, $date->getYear()) .
+                'till' => self::getCountDaysInMonth($date->getMonthNumber()->getMonthNumber(), $date->getYear()) .
                     '.' . $formattedMonth . '.' . $date->getYear(),
             ];
         }

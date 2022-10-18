@@ -63,45 +63,45 @@ class DateTransformer
     /**
      * @param string $inputDate
      * @return array
-     * @throws ConvertToDateCollectionException
-     * @throws ConvertToDateException
-     * @throws ConvertToDateIntervalException
-     * @throws InvalidCollectionException
-     * @throws InvalidIntervalException
-     * @throws InvalidPatternResourceException
      */
     public static function transformToIntervals(string $inputDate): array
     {
         $config = require __DIR__ . '/../config/date-patterns.php';
-        $patternStorage = new ArrayPatternStorage($config);
-        $converter = new RowToModelConverter($patternStorage);
-        $dateType = $converter->getRowType($inputDate)->getType();
 
-        switch ($dateType) {
-            case RowTypeEnum::SIMPLE_DATE:
-                $date = $converter->convertToDate($inputDate);
-                return [
-                    self::formatDate($date)
-                ];
-            case RowTypeEnum::DATE_INTERVAL:
-                $interval = $converter->convertToInterval($inputDate);
-                return [
-                    [
-                        'from' => self::formatDate($interval->getInitialDate())['from'],
-                        'till' => self::formatDate($interval->getFinalDate())['till']
-                    ]
-                ];
+        try {
+            $patternStorage = new ArrayPatternStorage($config);
+            $converter = new RowToModelConverter($patternStorage);
+            $dateType = $converter->getRowType($inputDate)->getType();
 
-            case RowTypeEnum::DATE_COLLECTION:
-                $dateIntervals = [];
-                $collection = $converter->convertToDateCollection($inputDate);
-                foreach ($collection->getAll() as $dateModel) {
-                    $dateIntervals[] = self::formatDate($dateModel);
-                }
+            switch ($dateType) {
+                case RowTypeEnum::SIMPLE_DATE:
+                    $date = $converter->convertToDate($inputDate);
+                    return [
+                        self::formatDate($date)
+                    ];
+                case RowTypeEnum::DATE_INTERVAL:
+                    $interval = $converter->convertToInterval($inputDate);
+                    return [
+                        [
+                            'from' => self::formatDate($interval->getInitialDate())['from'],
+                            'till' => self::formatDate($interval->getFinalDate())['till']
+                        ]
+                    ];
 
-                return $dateIntervals;
-            default:
-                return [];
+                case RowTypeEnum::DATE_COLLECTION:
+                    $dateIntervals = [];
+                    $collection = $converter->convertToDateCollection($inputDate);
+                    foreach ($collection->getAll() as $dateModel) {
+                        $dateIntervals[] = self::formatDate($dateModel);
+                    }
+
+                    return $dateIntervals;
+                default:
+                    return [];
+            }
+            
+        } catch (Exception $exception) {
+            return [];
         }
     }
 

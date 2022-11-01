@@ -19,3 +19,5 @@ var_dump(DateTransformer::transformToIntervals('01.05.1995, 01.01.1996,  21.03.1
 var_dump(DateTransformer::transformToIntervals('1987-1989'));
 var_dump(DateTransformer::transformToIntervals('22 Sep. 1978'));
 var_dump(DateTransformer::transformToIntervals('Aug. 1977-Sep. 1977'));
+var_dump(DateTransformer::transformToIntervals('22 Feb 1978'));
+var_dump(DateTransformer::transformToIntervals('22 Oct 1978'));

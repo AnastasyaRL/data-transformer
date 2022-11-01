@@ -12,3 +12,4 @@ echo DateTransformer::transformToString('2 января 1964 г') . "\n";
 echo DateTransformer::transformToString('2 Января 1964 Г') . "\n";
 echo DateTransformer::transformToString('2 Января 1964 Г - 2 июля 1964 Г') . "\n";
 echo DateTransformer::transformToString('2 Января 1964 Г.') . "\n";
+echo DateTransformer::transformToString('22 Feb 1978') . "\n";

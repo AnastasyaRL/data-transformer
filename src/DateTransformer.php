@@ -80,14 +80,14 @@ class DateTransformer
                 case RowTypeEnum::SIMPLE_DATE:
                     $date = $converter->convertToDate($inputDate);
                     return [
-                        self::formatDate($date)
+                        self::formDateInterval($date)
                     ];
                 case RowTypeEnum::DATE_INTERVAL:
                     $interval = $converter->convertToInterval($inputDate);
                     return [
                         [
-                            'from' => self::formatDate($interval->getInitialDate())['from'],
-                            'till' => self::formatDate($interval->getFinalDate())['till']
+                            'from' => self::formDateInterval($interval->getInitialDate())['from'],
+                            'till' => self::formDateInterval($interval->getFinalDate())['till']
                         ]
                     ];
 
@@ -95,7 +95,7 @@ class DateTransformer
                     $dateIntervals = [];
                     $collection = $converter->convertToDateCollection($inputDate);
                     foreach ($collection->getAll() as $dateModel) {
-                        $dateIntervals[] = self::formatDate($dateModel);
+                        $dateIntervals[] = self::formDateInterval($dateModel);
                     }
 
                     return $dateIntervals;
@@ -112,8 +112,18 @@ class DateTransformer
      * @param DateModel $date
      * @return string[]
      */
-    private static function formatDate(DateModel $date): array
+    private static function formDateInterval(DateModel $date): array
     {
+        if (!$date->getYear() && $date->getDay() && $date->getMonthNumber()) {
+            $formattedMonth = self::formatNumber($date->getMonthNumber()->getMonthNumber());
+            $formattedDay = self::formatNumber($date->getDay());
+
+            return [
+                'from' => $formattedDay . '.' . $formattedMonth . '.1900',
+                'till' => $formattedDay . '.' . $formattedMonth . '.2022',
+            ];
+        }
+
         if (!$date->getMonthNumber()) {
             return [
                 'from' => '01.01.' . $date->getYear(),

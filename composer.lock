@@ -1,0 +1,59 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "6beb141afcbf4c842fd9012125ba843c",
+    "packages": [
+        {
+            "name": "ruslanovich111/date-converter",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ruslanovich111/date-converter.git",
+                "reference": "93fbd7a89fdb715dddbbb055aac16ab86576bfa3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ruslanovich111/date-converter/zipball/93fbd7a89fdb715dddbbb055aac16ab86576bfa3",
+                "reference": "93fbd7a89fdb715dddbbb055aac16ab86576bfa3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": "^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ruslanovich\\DateConverter\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "ruslanovich111",
+                    "email": "ruslanovich111@mail.ru"
+                }
+            ],
+            "description": "Convert dates",
+            "support": {
+                "issues": "https://github.com/ruslanovich111/date-converter/issues",
+                "source": "https://github.com/ruslanovich111/date-converter/tree/1.1.1"
+            },
+            "time": "2022-11-08T06:05:10+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": "^8.0"
+    },
+    "platform-dev": [],
+    "plugin-api-version": "2.2.0"
+}
